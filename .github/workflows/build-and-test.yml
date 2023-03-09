@@ -3,7 +3,6 @@ name: B&T
 on:
   # Allows this workflow to be callable
   workflow_call:
-    inputs:
 
 jobs:
  coremltools_test:
