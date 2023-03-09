@@ -1,10 +1,12 @@
 name: Deploy
 
+# on:
+#   schedule:
+#   # 08:00 UTC / 00:00 PST / 01:00 PDT
+#   - cron: '*/5 * * * *'
 on:
-  schedule:
-  # 08:00 UTC / 00:00 PST / 01:00 PDT
-  - cron: '*/5 * * * *'
-
+  workflow_dispatch:
+    
 jobs:
   set-tag:
     runs-on: ubuntu-latest
