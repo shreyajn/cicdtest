@@ -1,0 +1,27 @@
+name: B&T
+
+on:
+  # Allows this workflow to be callable
+  workflow_call:
+    inputs:
+
+jobs:
+ coremltools_test:
+    # Runs following tests on Apple platform
+    #  - coremltools_extension Tetra graph pass unit & integration tests
+    #
+    # NOTE: If plan to run unit test for coremltools that can run on Ubuntu, please do so.
+    # macOS runner should be used only for inference related coremltools tests.
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test Tetra coremltools_extensions, onnx2tf and bench (on customer models)
+        if: ${{ github.event_name != 'schedule' }}
+        run: |
+          echo "not schedule"
+      - name: Tetra coremltools_extensions, onnx2tf and bench (on all models)
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          echo "on schedule"

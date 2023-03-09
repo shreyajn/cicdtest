@@ -1,0 +1,13 @@
+name: Deploy hub
+run-name: Deploy ${{ github.ref_name }}
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: B&T
+    needs:
+      - determine-hotfix
+    uses: ./.github/workflows/build-and-test.yml
+

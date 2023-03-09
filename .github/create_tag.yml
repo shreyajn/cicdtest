@@ -1,0 +1,28 @@
+name: Create TetraHub Tag and Start Deployment
+run-name: Create tag on ${{ github.sha }}
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 08:00 UTC / 00:00 PST / 01:00 PDT
+    - cron: '0 8 * * *'
+
+jobs:
+  set-tag:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+    - uses: actions/checkout@v3.1.0
+      with:
+        # tell the action to fetch tags and branches
+        fetch-depth: 0
+
+    - id: determine_tag
+      name: Determine Tag
+      run: |
+        echo "done!"
+
+    - name: Trigger deployment
+      run: |
+        gh workflow run deploy.yml 
