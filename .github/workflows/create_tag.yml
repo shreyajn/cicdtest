@@ -23,6 +23,6 @@ jobs:
       run: |
         echo "done!"
 
-    - name: Trigger deployment
-      run: |
-        gh workflow run deploy.yml 
+  build-and-test:
+    name: B&T
+    uses: ./.github/workflows/build-and-test.yml
