@@ -2,10 +2,9 @@ name: Create TetraHub Tag and Start Deployment
 run-name: Create tag on ${{ github.sha }}
 
 on:
-  workflow_dispatch:
   schedule:
   # 08:00 UTC / 00:00 PST / 01:00 PDT
-  - cron: '15 20 * * *'
+  - cron: '*/5 * * * *'
 
 jobs:
   set-tag:
